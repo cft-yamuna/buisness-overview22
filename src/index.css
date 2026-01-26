@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Push button container - holds both layers */
+.push-button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+.back{
+  width: 440px;
+  height: 30px;
+}
+
+/* Background layer - stays static (blue base) */
+.push-button-bg {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.push-button-label.label-active {
+  color: #000000;
+}
+
+
+/* Top layer - smaller from sides, positioned at top */
+.push-button-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 30px);
+  height: auto;
+  z-index: 2;
+  transition: transform 0.15s ease-out;
+}
+
+/* Text label - on top of everything, positioned on the yellow part */
+.push-button-label {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  color: #027CC5;
+  font-weight: bold;
+  font-size: 40px;
+  text-transform: uppercase;
+  text-align: center;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: transform 0.15s ease-out;
+}
+
+/* Push down animation for the top layer only - smooth press in */
+@keyframes push-down {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+/* Push down animation for text label (needs different transform origin) */
+@keyframes push-down-label {
+  0% {
+    transform: translate(-50%, -40%) translateY(0);
+  }
+
+  100% {
+    transform: translate(-50%, -40%) translateY(10px);
+  }
+}
+
+/* Pop back up animation - smooth release without bounce */
+@keyframes pop-up {
+  0% {
+    transform: translateX(-50%) translateY(8px);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Pop back up animation for text label - smooth release */
+@keyframes pop-up-label {
+  0% {
+    transform: translate(-50%, -40%) translateY(10px);
+  }
+
+  100% {
+    transform: translate(-50%, -40%) translateY(0);
+  }
+}
+
+/* Animation classes for top layer */
+.push-button-top.animate-push-down {
+  animation: push-down 0.2s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+.push-button-top.animate-pop-up {
+  animation: pop-up 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Animation classes for text label */
+.push-button-label.animate-push-down {
+  animation: push-down-label 0.2s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+.push-button-label.animate-pop-up {
+  animation: pop-up-label 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Hover effect - slight lift */
+.push-button:hover .push-button-top {
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.push-button:hover .push-button-label {
+  transform: translate(-50%, -40%) translateY(-2px);
+}
+
+/* Active/pressed state */
+.push-button:active .push-button-top {
+  transform: translateX(-50%) translateY(8px);
+}
+
+.push-button:active .push-button-label {
+  transform: translate(-50%, -40%) translateY(8px);
+}
+
+/* Disable hover effect during animation */
+.push-button.animating:hover .push-button-top {
+  transform: translateX(-50%);
+}
+
+.push-button.animating:hover .push-button-label {
+  transform: translate(-50%, -40%);
+}
+
+/* Legacy animations (kept for backward compatibility) */
+@keyframes press-in {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.85);
+  }
+}
+
+@keyframes pop-out {
+  0% {
+    transform: scale(0.85);
+  }
+
+  60% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-press {
+  animation: press-in 0.3s ease-out forwards;
+}
+
+.animate-pop {
+  animation: pop-out 0.5s ease-out forwards;
+}
+

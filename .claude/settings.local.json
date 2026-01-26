@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Select-Object -First 5)",
+      "Bash(ls:*)",
+      "Bash(npm run dev:*)",
+      "Bash(node:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(dir \"C:\\\\Users\\\\PC\\\\Downloads\\\\BPCL-OVERWIVE\\\\public\" /b)",
+      "Bash(npm run build:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\PC\\\\Downloads\\\\BPCL-OVERWIVE\\\\read_excel.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\PC\\\\Downloads\\\\BPCL-OVERWIVE\\\\read_excel2.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\PC\\\\Downloads\\\\BPCL-OVERWIVE\\\\read_excel3.ps1\")"
+    ]
+  }
+}
