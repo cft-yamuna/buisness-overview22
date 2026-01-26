@@ -18,7 +18,7 @@ export default function StartScreen({ onStart }: StartScreenProps) {
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        src="/bg.mp4"
+        src="/start.mp4"
         autoPlay
         loop
         muted
@@ -35,7 +35,7 @@ export default function StartScreen({ onStart }: StartScreenProps) {
           <img
             src="/start.png"
             alt="Start"
-            style={{ width: '756.61px', height: '182.48px' }}
+            style={{ width: '300px', height: '72px', marginTop: '750px' }}
           />
         </button>
       </div>
