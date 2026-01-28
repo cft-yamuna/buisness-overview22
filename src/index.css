@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Disable text selection */
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
 /* Push button container - holds both layers */
 .push-button {
   position: relative;
